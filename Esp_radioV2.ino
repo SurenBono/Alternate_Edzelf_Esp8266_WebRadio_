@@ -18,12 +18,12 @@
 //  - TinyXML           - Fork https://github.com/adafruit/TinyXML
 
 // The original sketch was modified for a Stackable Version/ Alternate Module Namely WeMosD1R1+ stackable VS1053B by surenbono76@gmail.com
-// reduced wiring and ease portablity and looks great too with its arclic casing in progress.
+// reduced wiring and ease portablity and looks great with its arclic casing in progress.
 // The only issue with this sketch was the Wifi AP Password were exposed on the Webinterface (xml) Setup/config page (spiffed/radio.ini).
 // Works better with Higher Bandwidth v2 and Tft defined.
 // Tested running standalone on solar before low voltage disconnect and grid-tied 24/7 day run once .
 // Stereo out to any amp with RCA jack for better audio.
-// Some presets runs smoother than others ,select, test, add or remove on radio.ini .
+// Some presets runs smoother than others ,select, test, add or remove ( radio.ini) .
 // TFT.  Define USETFT is compulsory else sound degrades even without one attached (bare minimum) ... ???
 // Fixed Chinese labeling error on 128x128 TFT offset error to 128x160 but display blanked after webinterface I.P.
 // 
@@ -53,15 +53,15 @@ extern "C"
 // You can test the analog input values by holding down the switch and select /?analog=1
 // in the web interface. See schematics in the documentation.
 // Switches are programmed as "Next station", "Goto station 1" and "Previous station" respectively.** Modified from the original sketch.
-// Set these values to 2000 if not used or tie analog input to ground.
+// Set these values to 2000 if not used or tie analog input to ground or touch.
 //
 #define NUMANA  3
-//#define asw1    252    ( Add Val for A0 with resistors in series with buttons in between )
+//#define asw1    252    ( Add +/- Val for 3 button in series to A0 with resistors..etc )
 //#define asw2    334
 //#define asw3    499
 #define asw1    2000  // Alternately Reg Val on A0 for next preset (bare minimum) with touch.
 #define asw2    2000  // Manual Buttonless Change (Preset +) touch A0 with a bared copper wire .
-#define asw3    2000  // Modified line 1024 for that ,switch Goto station 1 with Next Station (Preset+) from original Edzelf sketch.
+#define asw3    2000  // Modified line 1058 for that ,switched Goto station 1 to Next Station (Preset+) from original Edzelf sketch.
 //
 // Color definitions for the TFT screen (if used)
 #define BLACK   0x0000
@@ -1055,11 +1055,11 @@ void timer100()
         //dbgprint ( "Analog button %d pushed, v = %d", anewval, v ) ;
         if ( anewval == 1 )                       // Button 1?
         {
-          ini_block.newpreset = 0 ;               // Yes, goto first preset
+          ini_block.newpreset = currentpreset + 1 ; // Yes, goto next preset
         }
         else if ( anewval == 2 )                  // Button 2?
         {
-          ini_block.newpreset = currentpreset + 1 ; // Yes, goto next preset
+          ini_block.newpreset = 0 ;               // Yes, goto first preset
         }
         else if ( anewval == 3 )                  // Button 3?
         {

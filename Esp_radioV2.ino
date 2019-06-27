@@ -103,7 +103,7 @@ extern "C"
 #define INIFILENAME "/radio.ini"
 // radio.ini can only be uploaded via 192.168.4.1 not while compiling or sketch upload.
 // Access point name if connection to WiFi network fails or during new AP setup. The hostname for WiFi and OTA can be customized.
-// Not that the password of an AP must be at least as long as 8 characters.
+// Note that the password of an AP must be at least as long as 8 characters.
 #define NAME "Esp-radio.v2"   //AP=password for 192.168.4.1 radio.ini upload ** wifi only mode since no rj45 mentioned.
 // Maximum number of MQTT reconnects before give-up
 #define MAXMQTTCONNECTS 20

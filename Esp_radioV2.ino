@@ -21,12 +21,12 @@
 // reduced wiring and ease portablity and looks great too with its arclic casing in progress.
 // The only issue with this sketch was the Wifi AP Password were exposed on the Webinterface (xml) Setup/config page (spiffed/radio.ini).
 // Works better with Higher Bandwidth v2 and Tft defined.
-// Tested it running standalone on solar before low voltage disconnect and grid-tied 24/7 day run once .
+// Tested running standalone on solar before low voltage disconnect and grid-tied 24/7 day run once .
 // Stereo out to any amp with RCA jack for better audio.
 // Some presets runs smoother than others ,select, test, add or remove on radio.ini .
 // TFT.  Define USETFT is compulsory else sound degrades even without one attached (bare minimum) ... ???
 // Fixed Chinese labeling error on 128x128 TFT offset error to 128x160 but display blanked after webinterface I.P.
-
+// 
 #define VERSION "Fri, 28 June 2019 24:20:00 GMT"
 #define USETFT
 #include <ESP8266WiFi.h>
@@ -44,24 +44,23 @@
 #include <FS.h>
 #include <ArduinoOTA.h>
 #include <TinyXML.h>
-
+// 
 extern "C"
 {
 #include "user_interface.h"
 }
-
-// Definitions for 3 control switches on analog input
+// Definitions for 3 control switches on a single A0 analog input with resistor..etc
 // You can test the analog input values by holding down the switch and select /?analog=1
 // in the web interface. See schematics in the documentation.
-// Switches are programmed as "Next station", "Goto station 1" and "Previous station" respectively.
+// Switches are programmed as "Next station", "Goto station 1" and "Previous station" respectively.** Modified from the original sketch.
 // Set these values to 2000 if not used or tie analog input to ground.
-
+//
 #define NUMANA  3
 //#define asw1    252    ( Add Val for A0 with resistors in series with buttons in between )
 //#define asw2    334
 //#define asw3    499
 #define asw1    2000  // Alternately Reg Val on A0 for next preset (bare minimum) with touch.
-#define asw2    2000  // Manual Buttonless Change Preset + touch A0 with a bared copper wire ends .
+#define asw2    2000  // Manual Buttonless Change (Preset +) touch A0 with a bared copper wire .
 #define asw3    2000  // Modified line 1024 for that ,switch Goto station 1 with Next Station (Preset+) from original Edzelf sketch.
 //
 // Color definitions for the TFT screen (if used)
@@ -74,8 +73,8 @@ extern "C"
 #define YELLOW  RED | GREEN
 // Digital I/O used
 // Pins for VS1053 module
-#define VS1053_DCS  3  // D0 = RX , Hard Solder Modification on VS since conflicting with redundant 
-#define VS1053_CS   1  // D1 = TX , VS DCS & CS Pin had to be removed for this jumper to work .
+#define VS1053_DCS  3  // D0 = RX , Hard Solder Modification on VS since conflicting with redundant D1R1 SPI's
+#define VS1053_CS   1  // D1 = TX , VS DCS(7) & CS(6) Pin had to be removed for this jumper to work .
 #define VS1053_DREQ 16 // D2
 //
 // Pins CS and DC for TFT module (if used, see definition of "USETFT")
@@ -89,7 +88,7 @@ extern "C"
 // TFT_SDA   = D11 / 13 (MOSI)
 // TFT_SCK   = D13 / 14
 // TFT_LED   = 3V3
-// Control button (GPIO) for controlling station
+// Control button (GPIO) for controlling station ,can be ignored for single switch A0 buttonless bare wire touch.
 #define BUTTON1 4 //2
 #define BUTTON2 17 //0
 #define BUTTON3 5 //15
@@ -102,7 +101,7 @@ extern "C"
 // Access point name if connection to WiFi network fails.  Also the hostname for WiFi and OTA.
 // Not that the password of an AP must be at least as long as 8 characters.
 // Also used for other naming.
-#define NAME "Esp-radio.v2"
+#define NAME "Esp-radio.v2"   //AP=password for 192.168.4.1 radio.ini upload
 // Maximum number of MQTT reconnects before give-up
 #define MAXMQTTCONNECTS 20
 //

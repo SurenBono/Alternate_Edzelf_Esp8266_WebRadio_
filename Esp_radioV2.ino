@@ -25,6 +25,7 @@
 // Stereo out to any amp with RCA jack.
 // Some presets runs smoother than others ,select, test, add or remove on radio.ini .
 // TFT.  Define USETFT is compulsory else sound degrades even without one attached (bare minimum) ... ???
+
 #define VERSION "Fri, 28 June 2019 24:20:00 GMT"
 #define USETFT
 #include <ESP8266WiFi.h>
@@ -51,15 +52,16 @@ extern "C"
 // Definitions for 3 control switches on analog input
 // You can test the analog input values by holding down the switch and select /?analog=1
 // in the web interface. See schematics in the documentation.
-// Switches are programmed as "Goto station 1", "Next station" and "Previous station" respectively.
+// Switches are programmed as "Next station", "Goto station 1" and "Previous station" respectively.
 // Set these values to 2000 if not used or tie analog input to ground.
+
 #define NUMANA  3
-//#define asw1    252
+//#define asw1    252    ( Add Val for A0 with resistors in series with buttons in between )
 //#define asw2    334
 //#define asw3    499
-#define asw1    2000
-#define asw2    2000
-#define asw3    2000
+#define asw1    2000  // Alternately Reg Val on A0 for next preset (bare minimum) with touch.
+#define asw2    2000  // Manual Buttonless Change Preset + touch A0 with a bared copper wire ends .
+#define asw3    2000  // Modified line 1024 for that ,switch Goto station 1 with Next Station (Preset+) from original Edzelf sketch.
 //
 // Color definitions for the TFT screen (if used)
 #define BLACK   0x0000

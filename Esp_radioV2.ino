@@ -1,9 +1,10 @@
-//******************************************************************************************
-//*  Esp_radio -- Webradio receiver for ESP8266, (color) display and VS1053 MP3 module,    *
-//*               by Ed Smallenburg (ed@smallenburg.nl)                                    *
-//*  With ESP8266 running at 80 MHz, it is capable of handling up to 256 kb bitrate.       *
-//*  With ESP8266 running at 160 MHz, it is capable of handling up to 320 kb bitrate.      *
-//******************************************************************************************
+//*************************************************************************************************************
+//*  Alternate Edzelf Esp_radio -- Webradio receiver for WeMos D1R1, (color) display and VS1053B MP3 module,  *
+//*                           Originally by Ed Smallenburg (ed@smallenburg.nl)                                *
+//*                         Developed by Sroto&Gargees c/o surenbono76@gmail.com                              *
+//*            With ESP8266 running at 160 MHz, it is capable of handling up to 320 kb bitrate.               *
+//*************************************************************************************************************
+
 // ESP8266 libraries used:
 //  - ESP8266WiFi       - Part of ESP8266 Arduino default libraries.
 //  - SPI               - Part of Arduino default libraries.

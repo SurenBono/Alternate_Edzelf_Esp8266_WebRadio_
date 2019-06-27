@@ -17,8 +17,15 @@
 //  - AsyncMqttClient   - https://github.com/marvinroger/async-mqtt-client
 //  - TinyXML           - Fork https://github.com/adafruit/TinyXML
 
-#define VERSION "Fri, 05 Oct 2018 09:30:00 GMT"
-// TFT.  Define USETFT if required.
+// The original sketch was modified for a Stackable Version/ Alternate Module Namely WeMosD1R1+ stackable VS1053B by surenbono76@gmail.com
+// reduced wiring and ease portablity and looks great too with its arclic casing in progress.
+// The only issue with this sketch was the Wifi AP Password were exposed on the Webinterface (xml) Setup/config page (spiffed/radio.ini).
+// Works better with Higher Bandwidth v2 and Tft defined.
+// Tested it running standalone on solar before low voltage disconnect and gridtied 24/7 day once .
+// Stereo out to any amp with RCA jack.
+// Some presets runs smoother than others ,select, test, add or remove on radio.ini .
+// TFT.  Define USETFT is compulsory else sound degrades even without one attached (bare minimum) ... ???
+#define VERSION "Fri, 28 June 2019 24:20:00 GMT"
 #define USETFT
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>

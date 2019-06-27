@@ -21,10 +21,11 @@
 // reduced wiring and ease portablity and looks great too with its arclic casing in progress.
 // The only issue with this sketch was the Wifi AP Password were exposed on the Webinterface (xml) Setup/config page (spiffed/radio.ini).
 // Works better with Higher Bandwidth v2 and Tft defined.
-// Tested it running standalone on solar before low voltage disconnect and gridtied 24/7 day once .
-// Stereo out to any amp with RCA jack.
+// Tested it running standalone on solar before low voltage disconnect and grid-tied 24/7 day run once .
+// Stereo out to any amp with RCA jack for better audio.
 // Some presets runs smoother than others ,select, test, add or remove on radio.ini .
 // TFT.  Define USETFT is compulsory else sound degrades even without one attached (bare minimum) ... ???
+// Fixed Chinese labeling error on 128x128 TFT offset error to 128x160 but display blanked after webinterface I.P.
 
 #define VERSION "Fri, 28 June 2019 24:20:00 GMT"
 #define USETFT
@@ -73,12 +74,21 @@ extern "C"
 #define YELLOW  RED | GREEN
 // Digital I/O used
 // Pins for VS1053 module
-#define VS1053_DCS  3  //16
-#define VS1053_CS   1  //5
-#define VS1053_DREQ 16  //4
+#define VS1053_DCS  3  // D0 = RX , Hard Solder Modification on VS since conflicting with redundant 
+#define VS1053_CS   1  // D1 = TX , VS DCS & CS Pin had to be removed for this jumper to work .
+#define VS1053_DREQ 16 // D2
+//
 // Pins CS and DC for TFT module (if used, see definition of "USETFT")
 #define TFT_CS 15
 #define TFT_DC 2
+// TFT_VCC   = 5V
+// TFT_GND   = GND
+// TFT_CS    = D10 / 15
+// TFT_RESET = D12 / 12 (MISO)
+// TFT_A0    = D9 / 2
+// TFT_SDA   = D11 / 13 (MOSI)
+// TFT_SCK   = D13 / 14
+// TFT_LED   = 3V3
 // Control button (GPIO) for controlling station
 #define BUTTON1 4 //2
 #define BUTTON2 17 //0

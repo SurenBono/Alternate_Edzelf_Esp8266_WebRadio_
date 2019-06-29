@@ -63,7 +63,7 @@ extern "C"
 //#define asw3    499
 #define asw1    2000  // Alternately Reg Val on A0 for next preset (bare minimum) with touch.
 #define asw2    2000  // Manual Buttonless Change (Preset +) touch A0 with a bared copper wire .
-#define asw3    2000  // Modified line 1061 for that ,switched Goto station 1 to Next Station (Preset+) from original Edzelf sketch.
+#define asw3    2000  // Modified line 1066 for that ,switched Goto station 1 to Next Station (Preset+) from original Edzelf sketch.
 
 // Color definitions for the TFT screen (if used)
 #define BLACK   0x0000
@@ -77,6 +77,7 @@ extern "C"
 
 // Digital I/O used
 // Pins for VS1053 module
+
 #define VS1053_DCS  3  // D0 = RX , Hard Solder Modification on VS since conflicting with redundant D1R1 SPI's
 #define VS1053_CS   1  // D1 = TX , VS DCS(7) & CS(6) Pin had to be removed for this jumper to work .
 #define VS1053_DREQ 16 // D2
@@ -84,6 +85,7 @@ extern "C"
 // Pins CS and DC for TFT module (if used, see definition of "USETFT")
 #define TFT_CS 15
 #define TFT_DC 2
+
 // TFT_VCC   = 5V
 // TFT_GND   = GND
 // TFT_CS    = D10 / 15
@@ -92,16 +94,20 @@ extern "C"
 // TFT_SDA   = D11 / 13 (MOSI)
 // TFT_SCK   = D13 / 14
 // TFT_LED   = 3V3
+
 // Control button (GPIO) for controlling station ,can be ignored for single switch A0 buttonless bare wire touch.
+
 #define BUTTON1 4 //2
 #define BUTTON2 17 //0
 #define BUTTON3 5 //15
+
 // Ringbuffer for smooth playing. 20000 bytes is 160 Kbits, about 1.5 seconds at 128kb bitrate.
 #define RINGBFSIZ 20000
 // Debug buffer size
 #define DEBUG_BUFFER_SIZE 100
 // Name of the ini file
 #define INIFILENAME "/radio.ini"
+
 // radio.ini can only be uploaded via 192.168.4.1 not while compiling or sketch upload.
 // Access point name if connection to WiFi network fails or during new AP setup. The hostname for WiFi and OTA can be customized.
 // Note that the password of an AP must be at least as long as 8 characters.
@@ -132,8 +138,6 @@ char*  get_eeprom_station ( int index ) ;
 int    find_eeprom_station ( const char *search_entry ) ;
 int    find_free_eeprom_entry() ;
 bool   connecttohost() ;
-
-
 //
 //******************************************************************************************
 // Global data section.                                                                    *

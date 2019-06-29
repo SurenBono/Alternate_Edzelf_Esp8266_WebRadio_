@@ -1318,10 +1318,10 @@ bool connectwifi()
     pfs = dbgprint ( "IP = 192.168.4.1" ) ;            // Address if AP
     return false ;
   }
-  pfs = dbgprint ( "IP = %d.%d.%d.%d",
+  pfs = dbgprint ( "IP:%d.%d.%d.%d",
                    WiFi.localIP()[0], WiFi.localIP()[1], WiFi.localIP()[2], WiFi.localIP()[3] ) ;
 #if defined ( USETFT )
-  tft.setCursor ( 35, 80 ) ;
+  tft.setCursor ( 15, 80 ) ;
   tft.println ( pfs ) ;
 #endif
   return true ;
@@ -1747,7 +1747,7 @@ void setup()
   tft.setTextSize ( 1 ) ; 
   tft.setCursor ( 25, 55 ) ;
   tft.println ( VERSION ) ;
-  delay(500);
+  delay(1000);
 #else
   pinMode ( BUTTON1, INPUT_PULLUP ) ;                  // Input for control button 1
   pinMode ( BUTTON3, INPUT_PULLUP ) ;                  // Input for control button 3

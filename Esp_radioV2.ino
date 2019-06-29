@@ -28,7 +28,7 @@
 // Fixed Chinese labeling error on 128x128 TFT offset error to 128x160 but display blanked after webinterface I.P.
 // Added Buttonless Bare Wire Touch Version to A0 for (Preset +) only .
 
-#define VERSION "Fri, 28 June 2019 24:20:00 GMT"
+#define VERSION "S&G D1-R1.v2"
 #define USETFT
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
@@ -67,12 +67,13 @@ extern "C"
 
 // Color definitions for the TFT screen (if used)
 #define BLACK   0x0000
-#define BLUE    0xF800
-#define RED     0x001F
+#define BLUE    0x001F
+#define RED     0xF800
 #define GREEN   0x07E0
-#define CYAN    GREEN | BLUE
-#define MAGENTA RED | BLUE
-#define YELLOW  RED | GREEN
+#define CYAN    0x07FF
+#define MAGENTA 0xF81F
+#define YELLOW  0xFFE0  
+#define WHITE   0xFFFF
 
 // Digital I/O used
 // Pins for VS1053 module
@@ -1316,6 +1317,7 @@ bool connectwifi()
   pfs = dbgprint ( "IP = %d.%d.%d.%d",
                    WiFi.localIP()[0], WiFi.localIP()[1], WiFi.localIP()[2], WiFi.localIP()[3] ) ;
 #if defined ( USETFT )
+  tft.setCursor ( 35, 80 ) ;
   tft.println ( pfs ) ;
 #endif
   return true ;
@@ -1732,13 +1734,16 @@ void setup()
 #if defined ( USETFT )
   tft.begin() ;                                        // Init TFT interface
   tft.fillRect ( 0, 0, 160, 128, BLACK ) ;             // Clear screen does not work when rotated
-  tft.setRotation ( 3 ) ;                              // Use landscape format
+  tft.setRotation ( 0 ) ;                              // Use landscape=3 portrait=0 format
   tft.clearScreen() ;                                  // Clear screen
-  tft.setTextSize ( 1 ) ;                              // Small character font
-  tft.setTextColor ( WHITE ) ;                         // Info in white
-  tft.println ( "Starting" ) ;
-  tft.println ( "Version:" ) ;
+  tft.setTextSize ( 2 ) ;                              // Small character font
+  tft.setTextColor ( YELLOW ) ;                        // Info in yellow
+  tft.setCursor ( 20, 30 ) ;
+  tft.println ( "D1R1+VS" ) ;
+  tft.setTextSize ( 1 ) ; 
+  tft.setCursor ( 25, 55 ) ;
   tft.println ( VERSION ) ;
+  delay(500);
 #else
   pinMode ( BUTTON1, INPUT_PULLUP ) ;                  // Input for control button 1
   pinMode ( BUTTON3, INPUT_PULLUP ) ;                  // Input for control button 3

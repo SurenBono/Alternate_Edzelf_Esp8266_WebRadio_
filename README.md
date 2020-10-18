@@ -4,10 +4,10 @@ D1R1+VS1053B
 Advantage:
 -	Less Wires ( Plug’n’Play )
 -	Cheap and Simpler than Esp32
--	Stronger Signal on vs1053b
--	Tested once 24/7 run on Unlimited Data Copper Broadband  
--	Simple & Compatible
--	Windows Xp capable with some effort
+-	Hi Sound clarity vs1053b
+-	Tested 24/7 run once on Unlimited Data Cable Broadband  
+-	Simple & Forced Compatible
+-	Windows Xp programmed.
 -	Wifi with LED indicator 
 - Buttonless Touch Preset +
 
@@ -18,8 +18,9 @@ Disadvantage
 -	Needs 2wire vs1053b hard solder modification
 ( conflicting with redundant D1 SPI )
 -	Only runs smoothly when (usetft) defined
--	radio.ini needs reboot in some case
--	Exposed Wifi password on webinterface setting but private
+-	radio.ini needs to be uploaded via wifi to spiff.
+-	Exposed Wifi password on webinterface setup page .
+- Security Advice: Enable Router aceess control (Whitelist).Only registered MAC gets access.
 
 // Pins for VS1053 module
 #define VS1053_DCS  3  

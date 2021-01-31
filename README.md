@@ -41,3 +41,7 @@ Note x:
 -	SDA & SCL can be reserved for i2c OLED display
 -	CS_SD of vs1053b can be used for LOCALHOST play
 -	“USETFT” should be defined for smooth play on bare minimum else returns choppy streaming.
+- Dont hesitate to re-devolope the sketch to your liking (OpenSourced D.I.Y Concept )
+
+Re-Figured using Arduino ver 1.8.9 , esp8266 ver 2.5.0 on XP SP3 by Sroto & Gargees trials & errors.
+Based on Original OpenSourced Author Edzelf.
